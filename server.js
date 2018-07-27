@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'dev';
 let express = require('express');
 let app = express();
 let mongoose = require('mongoose');
@@ -13,7 +14,7 @@ let options = {
               }; 
 
 //db connection      
-mongoose.connect(config.DBHost, options);
+mongoose.connect(config.DBHost, { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
